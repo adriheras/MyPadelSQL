@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <meta charset='utf-8'>
+</head>
+<body>
+  <header>
+    {% block encabezado %}{% endblock %}
+  	<nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="/"><img class="logo" src="{% static 'media/logo.png' %}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+              <a class="nav-item nav-link" href='/ranking'>Ranking de jugadores</a>
+              <a class="nav-item nav-link" href='/busca_jugadores_nombre'>Buscar jugadores por nombre</a>
+              <a class="nav-item nav-link " href='/lista_jugadores_posicion'>Lista de jugadores por posición</a>
+              <a class="nav-item nav-link " href='/estadisticas'>Estadísticas de jugadores</a>
+              <a class="nav-item nav-link " href='/busca_jugadores_ciudad'>Buscar jugadores por ciudad</a>
+              <a class="nav-item nav-link " href='/filtra_jugadores_edad'>Filtrar por edad</a>
+              <a class="nav-item nav-link " href='/cargar'>Cargar DB</a>
+          </div>
+      </div>
+  </nav>
+  </header>
+  <section>
+    {% block contenido %}
+    {% endblock %}
+  </section>
+  {% block pie %}{% endblock %} 
+</body>
+</html>

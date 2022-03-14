@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block encabezado %}
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{%static 'css/style.css' %}">
+
+
+{% endblock %} {% block contenido %}
+<br>
+<h1 style="text-align: center;">Estadísticas de jugadores</h1>
+<br>
+<form style="text-align: center;" id="formulario" method="post" action=''>{% csrf_token %}
+	<fieldset>
+		<label for="estadisticas">¿Qué estadísticas quieres conocer? </label>
+		<select id="estadisticas" name="estadisticas">
+			<option value="Temporada">Temporada</option>
+			<option value="Historico">Historico</option>
+			<input type='submit' value='Ver estadisticas'/>
+		<br><br>
+	</fieldset>
+</form>
+<p style="text-align: center;">La tabla está ordenada por número de partidos ganados</p>
+<table class="styled-table" style="width: 90%;">
+  <thead>
+    <tr>
+      <th>Ranking</th>
+      <th>Puntos</th>
+      <th>Nombre del jugador</th>
+      <th>Partidos jugados</th>
+      <th>Partidos ganados</th>
+      <th>Partidos perdidos</th>
+      <th>Efectividad</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for jugador in estadisticas %}
+    <tr>
+      <td>{{jugador.jugador.ranking}}</td>
+      <td>{{jugador.jugador.puntos}}</td>
+      <td>{{jugador.jugador}}</td>
+      <td>{{jugador.partidosJ}} {{jugador.partidosJAnyo}}</td>
+      <td>{{jugador.partidosG}}{{jugador.partidosGAnyo}}</td>
+      <td>{{jugador.partidosP}}{{jugador.partidosPAnyo}}</td>
+      <td>{{jugador.efectividad}}{{jugador.efectividadAnyo}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

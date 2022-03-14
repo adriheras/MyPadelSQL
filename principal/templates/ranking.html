@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block encabezado %}
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="{%static 'css/style.css' %}">
+
+
+{% endblock %} {% block contenido %}
+<br>
+<h1 style="text-align: center;">Ranking de jugadores</h1>
+<br>
+<table class="styled-table" style="width: 90%;">
+  <thead>
+    <tr>
+      <th>Ranking</th>
+      <th>Puntos</th>
+      <th>Jugador</th>
+      <th>Posición</th>
+      <th>Altura</th>
+      <th>Fecha de nacimiento</th>
+      <th>Lugar de nacimiento</th>
+      <th>Compañero</th>
+      <th>Residencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for jugador in jugadores %}
+    <tr>
+      <td>{{jugador.ranking}}</td>
+      <td>{{jugador.puntos}}</td>
+      <td>{{jugador.nombre}}</td>
+      <td>{{jugador.posicion}}</td>
+      <td>{{jugador.altura}} cm</td>
+      <td>{{jugador.fechaNac}}</td>
+      <td>{{jugador.lugarNac}}</td>
+      <td>{{jugador.compañero}}</td>
+      <td>{{jugador.residencia}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block encabezado %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{%static 'css/style.css' %}" />
+
+{% endblock %} {% block contenido %}
+<br />
+<h1 style="text-align: center">Buscar jugadores por nombre</h1>
+<br />
+<form style="text-align: center" id="formulario" method="post" action="">
+  {% csrf_token %}
+  <fieldset>
+    <input
+      type="text"
+      name="nombre"
+      id="nombre"
+      placeholder="Nombre del jugador"
+    />
+
+    <input type="submit" value="Realizar búsqueda" />
+    <br /><br />
+  </fieldset>
+</form>
+
+<table class="styled-table" style="width: 90%;">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ranking</th>
+      <th>Puntos</th>
+      <th>Posición</th>
+      <th>Altura</th>
+      <th>Fecha de nacimiento</th>
+      <th>Lugar de nacimiento</th>
+      <th>Compañero</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{r.2}}</td>
+      <td>{{r.0}}</td>
+      <td>{{r.1}}</td>
+      <td>{{r.3}}</td>
+      <td>{{r.4}} cm</td>
+      <td>{{r.5}}</td>
+      <td>{{r.6}}</td>
+      <td>{{r.7}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
